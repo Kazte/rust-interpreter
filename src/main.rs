@@ -1,7 +1,5 @@
-use core::panic;
 use std::env;
 use std::fs;
-use std::io::Empty;
 use std::io::{self, Write};
 
 fn main() {
