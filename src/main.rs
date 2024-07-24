@@ -1,6 +1,9 @@
 use std::env;
 use std::fs;
 use std::io::{self, Write};
+use std::process::exit;
+mod lexer;
+use lexer::Lexer;
 
 fn main() {
     // Collect command line arguments
@@ -31,7 +34,8 @@ fn main() {
 
             // Check if the file is empty
             if !file_contents.is_empty() {
-                scan_token(&file_contents);
+                let result = Lexer::lexer(&file_contents);
+                exit(result)
             } else {
                 // EOF NULL means that the file is empty
 
@@ -44,32 +48,4 @@ fn main() {
             return;
         }
     }
-}
-
-fn scan_token(input: &str) {
-    let mut line = 1;
-
-    for c in input.chars() {
-        match c {
-            '(' => println!("LEFT_PAREN ( null"),
-            ')' => println!("RIGHT_PAREN ) null"),
-            '{' => println!("LEFT_BRACE {{ null"),
-            '}' => println!("RIGHT_BRACE }} null"),
-            ',' => println!("COMMA , null"),
-            '.' => println!("DOT . null"),
-            '-' => println!("MINUS - null"),
-            '+' => println!("PLUS + null"),
-            ';' => println!("SEMICOLON ; null"),
-            '*' => println!("STAR * null"),
-            '\n' => line += 1,
-            _ => writeln!(
-                io::stderr(),
-                "[line {}] Error: Unexpected character: {}",
-                line,
-                c
-            )
-            .unwrap(),
-        }
-    }
-    println!("EOF  null");
 }
