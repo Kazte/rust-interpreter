@@ -1,3 +1,4 @@
+use core::panic;
 use std::env;
 use std::fs;
 use std::io::{self, Write};
@@ -53,7 +54,13 @@ fn scan_token(input: &str) {
             ')' => println!("RIGHT_PAREN ) null"),
             '{' => println!("LEFT_BRACE {{ null"),
             '}' => println!("RIGHT_BRACE }} null"),
-            _ => {}
+            ',' => println!("COMMA , null"),
+            '.' => println!("DOT . null"),
+            '-' => println!("MINUS - null"),
+            '+' => println!("PLUS + null"),
+            ';' => println!("SEMICOLON ; null"),
+            '*' => println!("STAR * null"),
+            _ => panic!("Unexpected character: {}", c),
         }
     }
     println!("EOF  null");
