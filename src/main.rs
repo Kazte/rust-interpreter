@@ -1,6 +1,7 @@
 use core::panic;
 use std::env;
 use std::fs;
+use std::io::Empty;
 use std::io::{self, Write};
 
 fn main() {
@@ -48,6 +49,8 @@ fn main() {
 }
 
 fn scan_token(input: &str) {
+    let mut line = 1;
+
     for c in input.chars() {
         match c {
             '(' => println!("LEFT_PAREN ( null"),
@@ -60,7 +63,9 @@ fn scan_token(input: &str) {
             '+' => println!("PLUS + null"),
             ';' => println!("SEMICOLON ; null"),
             '*' => println!("STAR * null"),
-            _ => panic!("Unexpected character: {}", c),
+            '\n' => line += 1,
+            ' ' | '\r' | '\t' => (),
+            _ => println!("[line {}] Error: Unexpected character: {}", line, c),
         }
     }
     println!("EOF  null");
