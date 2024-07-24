@@ -20,7 +20,7 @@ impl Lexer {
                 '\n' => line += 1,
                 _ => {
                     result = 65;
-                    println!("[line {}] Error: Unexpected character: {}", line, c);
+                    eprintln!("[line {}] Error: Unexpected character: {}", line, c);
                 }
             }
         }
