@@ -17,6 +17,10 @@ impl Lexer {
                 '+' => println!("PLUS + null"),
                 ';' => println!("SEMICOLON ; null"),
                 '*' => println!("STAR * null"),
+                '!' => println!("BANG ! null"),
+                '=' => println!("EQUAL = null"),
+                '<' => println!("LESS < null"),
+                '>' => println!("GREATER > null"),
                 '\n' => line += 1,
                 _ => {
                     result = 65;
