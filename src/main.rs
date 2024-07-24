@@ -31,8 +31,10 @@ fn main() {
 
             // Check if the file is empty
             if !file_contents.is_empty() {
-                panic!("Scanner not implemented");
+                scan_token(&file_contents);
             } else {
+                // EOF NULL means that the file is empty
+
                 println!("EOF  null"); // Placeholder, remove this line when implementing the scanner
             }
         }
@@ -42,4 +44,15 @@ fn main() {
             return;
         }
     }
+}
+
+fn scan_token(input: &str) {
+    for c in input.chars() {
+        match c {
+            '(' => println!("LEFT_PAREN ( null"),
+            ')' => println!("RIGHT_PAREN ) null"),
+            _ => {}
+        }
+    }
+    println!("EOF  null");
 }
