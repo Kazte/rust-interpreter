@@ -62,8 +62,13 @@ fn scan_token(input: &str) {
             ';' => println!("SEMICOLON ; null"),
             '*' => println!("STAR * null"),
             '\n' => line += 1,
-            ' ' | '\r' | '\t' => (),
-            _ => println!("[line {}] Error: Unexpected character: {}", line, c),
+            _ => writeln!(
+                io::stderr(),
+                "[line {}] Error: Unexpected character: {}",
+                line,
+                c
+            )
+            .unwrap(),
         }
     }
     println!("EOF  null");
