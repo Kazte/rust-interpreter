@@ -29,7 +29,7 @@ fn main() {
                 String::new()
             });
 
-            // Uncomment this block to pass the first stage
+            // Check if the file is empty
             if !file_contents.is_empty() {
                 panic!("Scanner not implemented");
             } else {
@@ -37,6 +37,7 @@ fn main() {
             }
         }
         _ => {
+            // Handle unknown commands
             writeln!(io::stderr(), "Unknown command: {}", command).unwrap();
             return;
         }
